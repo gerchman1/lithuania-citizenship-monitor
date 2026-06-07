@@ -44,7 +44,11 @@ with sync_playwright() as p:
 
     page = browser.new_page()
 
-    page.goto(SEARCH_URL, wait_until="networkidle")
+    page.goto(SEARCH_URL)
+
+page.wait_for_timeout(5000)
+
+print(page.content())
 
     page.fill(
         "#searchCompositeComponent\\:contentForm\\:searchParamPane\\:j_id_30\\:paramAdoptionNo",
